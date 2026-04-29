@@ -109,7 +109,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', 'inventario_citibank'),
         'USER': os.getenv('DB_USER', 'adminapp'), # root
         'PASSWORD': os.getenv('DB_PASSWORD', 'Aa123456'),
-        'HOST': os.getenv('DB_HOST', 'db'), #localhost
+        'HOST': os.getenv('DB_HOST', 'localhost'), #localhost
         'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
