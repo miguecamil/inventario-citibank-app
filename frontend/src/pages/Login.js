@@ -29,7 +29,6 @@ function Login() {
         console.log("TOKEN GUARDADO:", response.data.token);
 
         navigate("/menu");
-        
       } else {
         alert(response.data.message);
       }
@@ -74,9 +73,9 @@ function Login() {
           </div>
 
           <div className="mb-3 text-end">
-            <a href="#" className="forgot-link">
+            <button type="button" className="forgot-link btn btn-link p-0">
               ¿Olvidaste tu contraseña?
-            </a>
+            </button>
           </div>
 
           <button type="submit" className="login-btn btn-brand w-100 py-2">

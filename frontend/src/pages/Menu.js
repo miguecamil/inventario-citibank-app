@@ -6,9 +6,9 @@ import logo from "../assets/img/Logo.png"
 function Menu(){
 
 const navigate = useNavigate()
-const { auth, logout } = useAuth()
+/*const { auth, logout } = useAuth()*/
+const { auth } = useAuth()
 
-return(
 
 <div className="role-wrapper">
 
