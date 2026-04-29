@@ -1,4 +1,5 @@
-import os
+import dj_database_url  # Para uso de base de datos en Render.com
+import os               # Para uso de variables de entorno en configuración de base de datos local y en Render.com        
 from pathlib import Path
 
 """
@@ -104,14 +105,23 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Se agrega os.getenv para obtener las variables de entorno, con valores por defecto para desarrollo local al usar con contenedores
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'inventario_citibank'),
-        'USER': os.getenv('DB_USER', 'adminapp'), # root
-        'PASSWORD': os.getenv('DB_PASSWORD', 'Aa123456'),
-        'HOST': os.getenv('DB_HOST', 'localhost'), #localhost
-        'PORT': os.getenv('DB_PORT', '3306'),
-    }
+    
+    # Configuración para uso en BD Render
+    
+    DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )    
+    
+    # Configuración para uso local en contenedores
+    #'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': os.getenv('DB_NAME', 'inventario_citibank'),
+    #    'USER': os.getenv('DB_USER', 'adminapp'), # root
+    #    'PASSWORD': os.getenv('DB_PASSWORD', 'Aa123456'),
+    #    'HOST': os.getenv('DB_HOST', 'db'), #localhost
+    #    'PORT': os.getenv('DB_PORT', '3306'),
+    #}
 }
 
 
