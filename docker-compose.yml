@@ -1,0 +1,36 @@
+services:
+
+  db:
+    image: mysql:8
+    container_name: mysql_inventario
+    restart: always
+    environment:
+      MYSQL_DATABASE: inventario_citibank
+      MYSQL_USER: adminapp
+      MYSQL_PASSWORD: Aa123456
+      MYSQL_ROOT_PASSWORD: Root123456
+    ports:
+      - "3307:3306"
+
+  backend:
+    build: ./backend
+    container_name: django_backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_NAME: inventario_citibank
+      DB_USER: adminapp
+      DB_PASSWORD: Aa123456
+      DB_HOST: db
+      DB_PORT: 3306
+    command: sh -c "sleep 20 && python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: react_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend

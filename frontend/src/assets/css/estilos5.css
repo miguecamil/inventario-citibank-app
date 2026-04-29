@@ -1,0 +1,38 @@
+/* Fondo azul para Campo */
+body.campo-bg {
+  background-color: #0a3d91; 
+  color: #fff;
+}
+
+/* Caja blanca sobre azul */
+.form-card {
+  background: #0a3d91;
+  border-radius: 12px;
+  color: #fff;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Títulos de secciones */
+.section-title {
+  font-weight: bold;
+  margin: 12px 0 6px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+}
+
+/* Logo */
+.logo {
+  width: 80px;
+}
+
+/* Botones */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
