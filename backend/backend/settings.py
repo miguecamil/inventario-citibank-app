@@ -28,9 +28,12 @@ SECRET_KEY = 'django-insecure-+1@=a*qb#@&)x6zwop$ffke_$(&_ks))5w63w=@5%zs2fol$gv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'inventario-citibank-app.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]
 
-ALLOWED_HOSTS.append('inventario-citibank-app.onrender.com')
 
 CORS_ALLOW_ALL_ORIGINS = True
 
