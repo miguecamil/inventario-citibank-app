@@ -16,13 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.http import JsonResponse
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-
+#Response de prueba para verificar que el backend está funcionando correctamente
 
 def home(request):
-    return HttpResponse("Backend Inventario Citibank funcionando correctamente 🚀")
+    return JsonResponse({
+        "status": "online",
+        "project": "Inventario Citibank",
+        "version": "1.0"
+    })
 
 urlpatterns = [
     path('', home),
