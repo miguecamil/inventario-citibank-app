@@ -107,8 +107,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     
     # Configuración para uso en BD Render
-    
-    DATABASES = {
+        
     'default': dj_database_url.config(
         default=os.getenv("DATABASE_URL")
     )    
