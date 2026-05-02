@@ -1,5 +1,5 @@
-import dj_database_url  # Para uso de base de datos en Render.com
 import os               # Para uso de variables de entorno en configuración de base de datos local y en Render.com        
+import dj_database_url  # Para uso de base de datos en Render.com
 from pathlib import Path
 
 """
@@ -29,11 +29,7 @@ SECRET_KEY = 'django-insecure-+1@=a*qb#@&)x6zwop$ffke_$(&_ks))5w63w=@5%zs2fol$gv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'inventario-citibank-app.onrender.com',
-    'localhost',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = ['*'] # Permitir todas las direcciones IP (no recomendado para producción)
 
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -179,7 +175,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles' # Para uso en Render.com
 
 from datetime import timedelta
 
