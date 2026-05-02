@@ -1,5 +1,5 @@
-#import dj_database_url  # Para uso de base de datos en Render.com
-#import os               # Para uso de variables de entorno en configuración de base de datos local y en Render.com        
+import dj_database_url  # Para uso de base de datos en Render.com
+import os               # Para uso de variables de entorno en configuración de base de datos local y en Render.com        
 from pathlib import Path
 
 """
@@ -105,22 +105,31 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Se agrega os.getenv para obtener las variables de entorno, con valores por defecto para desarrollo local al usar con contenedores
 
 
-# Configuración para uso local sin contenedores (SQLite)
+# Configuración para uso ne Render
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.getenv("DATABASE_URL"):
+    DATABASES = {
+        'default': dj_database_url.config()
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+#Configuración para prueba de contenedores Local
 
-# Configuración para uso en BD Render
-#DATABASES = {    
-#    'default': dj_database_url.config(
-#        default=os.getenv("DATABASE_URL")
-#    )    
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
+   
     
     # Configuración para uso local en contenedores
     #'default': {
@@ -169,6 +178,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 from datetime import timedelta
 
