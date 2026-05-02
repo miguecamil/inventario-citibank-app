@@ -11,6 +11,8 @@ class Productos(models.Model):
     def __str__(self):
         return self.tipo_activo
 
-    class Meta:
-        managed = False
-        db_table = 'productos'
+    #Instrucción para llamar la tabla ya creada en MySQL.
+    
+    #class Meta:
+    #    managed = False
+    #    db_table = 'productos'

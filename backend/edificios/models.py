@@ -9,7 +9,9 @@ class Edificios(models.Model):
 
     def __str__(self):
         return self.edificio
-
-    class Meta:
-        managed = False
-        db_table = 'edificios'
+    
+    
+#Instrucción para llamar la tabla ya creada en MySQL.
+#    class Meta:
+#        managed = False
+#        db_table = 'edificios'

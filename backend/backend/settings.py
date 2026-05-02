@@ -1,5 +1,5 @@
-import dj_database_url  # Para uso de base de datos en Render.com
-import os               # Para uso de variables de entorno en configuración de base de datos local y en Render.com        
+#import dj_database_url  # Para uso de base de datos en Render.com
+#import os               # Para uso de variables de entorno en configuración de base de datos local y en Render.com        
 from pathlib import Path
 
 """
@@ -104,13 +104,23 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Se agrega os.getenv para obtener las variables de entorno, con valores por defecto para desarrollo local al usar con contenedores
 
+
+# Configuración para uso local sin contenedores (SQLite)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 DATABASES = {
-    
-    # Configuración para uso en BD Render
-        
-    'default': dj_database_url.config(
-        default=os.getenv("DATABASE_URL")
-    )    
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# Configuración para uso en BD Render
+#DATABASES = {    
+#    'default': dj_database_url.config(
+#        default=os.getenv("DATABASE_URL")
+#    )    
     
     # Configuración para uso local en contenedores
     #'default': {
@@ -121,7 +131,7 @@ DATABASES = {
     #    'HOST': os.getenv('DB_HOST', 'db'), #localhost
     #    'PORT': os.getenv('DB_PORT', '3306'),
     #}
-}
+#}
 
 
 # Password validation

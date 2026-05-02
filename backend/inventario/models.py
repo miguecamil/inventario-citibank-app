@@ -25,6 +25,7 @@ class Inventario(models.Model):
     def __str__(self):
         return self.serie
 
-    class Meta:
-        managed = False
-        db_table = 'inventario_total'
+#Instrucción para llamar la tabla ya creada en MySQL.
+#    class Meta:
+#        managed = False
+#        db_table = 'inventario_total'

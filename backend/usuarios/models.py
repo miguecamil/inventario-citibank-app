@@ -18,6 +18,7 @@ class Usuarios(models.Model):
     def __str__(self):
         return self.full_name
 
-    class Meta:
-        managed = False
-        db_table = 'usuarios'
+#Instrucción para llamar la tabla ya creada en MySQL.
+#    class Meta:
+#        managed = False
+#        db_table = 'usuarios'

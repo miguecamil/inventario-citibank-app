@@ -9,7 +9,7 @@ class Proveedores(models.Model):
 
     def __str__(self):
         return self.nombre
-
-    class Meta:
-        managed = False
-        db_table = 'proveedores'
+#Instrucción para llamar la tabla ya creada en MySQL.
+#    class Meta:
+#        managed = False
+#        db_table = 'proveedores'

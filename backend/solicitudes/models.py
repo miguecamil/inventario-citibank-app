@@ -20,6 +20,7 @@ class Solicitudes(models.Model):
     def __str__(self):
         return self.descripcion_solicitud
 
-    class Meta:
-        managed = False
-        db_table = 'registro_solicitudes'
+#Instrucción para llamar la tabla ya creada en MySQL.
+#    class Meta:
+#        managed = False
+#        db_table = 'registro_solicitudes'
