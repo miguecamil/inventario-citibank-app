@@ -35,8 +35,7 @@ ALLOWED_HOSTS = ['*'] # Permitir todas las direcciones IP (no recomendado para p
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    
+    "https://tu-frontend.vercel.app"
 ]
 
 # Application definition
@@ -107,7 +106,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 if os.getenv("DATABASE_URL"):
     DATABASES = {
-        'default': dj_database_url.config()
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            ssl_require=True
+       )
     }
 else:
     DATABASES = {
