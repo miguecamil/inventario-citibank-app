@@ -120,16 +120,8 @@ else:
     }
 #Configuración para prueba de contenedores Local
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
-   
     
-    # Configuración para uso local en contenedores
+    # Configuración para uso local en contenedores conexión a MySQL (descomentar para uso local con contenedores)
     #'default': {
     #    'ENGINE': 'django.db.backends.mysql',
     #    'NAME': os.getenv('DB_NAME', 'inventario_citibank'),
