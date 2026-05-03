@@ -33,6 +33,7 @@ function Login() {
         alert(response.data.message);
       }
     } catch (error) {
+      console.error("Error en login:", error);
       alert("Por favor verifique que las credenciales se encuentren correctas");
     }
   };

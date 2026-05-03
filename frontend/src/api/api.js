@@ -1,10 +1,15 @@
 //Centraliza la autenticación
 
 import axios from "axios";
+import { API_URL } from "../config"; // Importa la URL base desde config.js  
 
 // Crea la instancia de axios
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/"
+  
+  baseURL: API_URL // Para producción, usa la URL del config.js
+
+  //baseURL: "http://127.0.0.1:8000/api/" // Para desarrollo local
+  
 });
 
 // Interceptor de request para agregar token
