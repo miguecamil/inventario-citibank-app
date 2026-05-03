@@ -1,3 +1,6 @@
+from django.views.decorators.csrf import csrf_exempt # Para desactivar CSRF en la vista de login (solo para pruebas, no recomendado en producción sin otras medidas de seguridad)
+from django.utils.decorators import method_decorator
+
 from django.contrib.auth import authenticate  #  Autenticación correcta
 
 from django.shortcuts import render
@@ -28,6 +31,9 @@ class IngenierosViewSet(viewsets.ModelViewSet):
 # ===============================
 # LOGIN DE INGENIEROS (CORREGIDO)
 # ===============================
+
+
+@csrf_exempt # Desactivar CSRF para esta vista (solo para pruebas, no recomendado en producción sin otras medidas de seguridad)
 @api_view(['POST'])
 def login_ingeniero(request):
 
