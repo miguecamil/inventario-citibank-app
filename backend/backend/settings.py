@@ -107,18 +107,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if os.getenv("DATABASE_URL"):
     DATABASES = {
         'default': dj_database_url.config(
-            conn_max_age=600,
+           conn_max_age=600,
             ssl_require=True
        )
     }
 else:
-    DATABASES = {
+   DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 #Configuración para prueba de contenedores Local
+
+#DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': BASE_DIR / 'db.sqlite3',
+#        }
+#    }
+
 
     
     # Configuración para uso local en contenedores conexión a MySQL (descomentar para uso local con contenedores)
