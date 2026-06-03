@@ -10,6 +10,8 @@ import {
 import { getProduct } from "../api/productosApi";
 import { getUsers } from "../api/usersApi";
 import { getIngenieros } from "../api/ingenierosApi";
+import Logo from "../assets/img/Logo.png";
+import { printMovementReport } from "../utils/movementPrint";
 
 const buildLabelMap = (items, keyField, labelBuilder) =>
   items.reduce((acc, item) => {
@@ -26,6 +28,7 @@ function InventarioEstadoPage({
   tableColumns,
   searchColumns,
   searchPlaceholder,
+  printConfig,
 }) {
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
@@ -152,6 +155,31 @@ function InventarioEstadoPage({
   const searchModalFunction = (searchValue = "") =>
     searchInventarioFiltrado({ estado: estadoFiltro, search: searchValue });
 
+  const handlePreviewReport = () => {
+    if (!formData?.serie) {
+      alert("Seleccione un registro antes de ver el informe");
+      return;
+    }
+
+    const resolvedRecord = {
+      ...formData,
+      id_activo_label: catalogos.productos[formData.id_activo] || formData.id_activo,
+      id_user_label: catalogos.usuarios[formData.id_user] || formData.id_user,
+      id_ingeniero_label:
+        catalogos.ingenieros[formData.id_ingeniero] || formData.id_ingeniero,
+      id_ingeniero_devolucion_label:
+        catalogos.ingenieros[formData.id_ingeniero_devolucion] ||
+        formData.id_ingeniero_devolucion,
+    };
+
+    printMovementReport({
+      reportTitle: printConfig?.reportTitle || title,
+      detailFields: printConfig?.detailFields || tableColumns,
+      record: resolvedRecord,
+      logoSrc: Logo,
+    });
+  };
+
   /**Transforma los items para mostrar labels en lugar de IDs */
   
   const rows = useMemo(
@@ -248,9 +276,9 @@ function InventarioEstadoPage({
           <button
             type="button"
             className="btn btn-outline-dark"
-            onClick={() => alert("Impresion de soporte pendiente")}
+            onClick={handlePreviewReport}
           >
-            Imprimir Soporte
+            Ver Informe
           </button>
         </div>
 

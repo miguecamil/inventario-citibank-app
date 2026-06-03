@@ -1,4 +1,4 @@
-from django.db import models
+﻿from django.db import models
 
 
 class Proveedores(models.Model):
@@ -9,7 +9,7 @@ class Proveedores(models.Model):
 
     def __str__(self):
         return self.nombre
-#Instrucción para llamar la tabla ya creada en MySQL.
-#    class Meta:
-#        managed = False
-#        db_table = 'proveedores'
+
+    class Meta:
+        managed = False
+        db_table = 'proveedores'

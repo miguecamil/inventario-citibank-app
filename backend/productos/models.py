@@ -1,4 +1,5 @@
-from django.db import models
+﻿from django.db import models
+
 
 class Productos(models.Model):
     id_activo = models.IntegerField(primary_key=True)
@@ -11,8 +12,6 @@ class Productos(models.Model):
     def __str__(self):
         return self.tipo_activo
 
-    #Instrucción para llamar la tabla ya creada en MySQL.
-    
-    #class Meta:
-    #    managed = False
-    #    db_table = 'productos'
+    class Meta:
+        managed = False
+        db_table = 'productos'

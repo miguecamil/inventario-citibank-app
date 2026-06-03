@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/estilos.css";
 import Logo from "../assets/img/Logo.png";
 
 import api from "../api/api";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
@@ -18,16 +18,12 @@ function Login() {
 
     try {
       const response = await api.post("login/", {
-        username: username,
-        password: password,
+        username,
+        password,
       });
-
-      console.log(response.data); //VERIFICAR RESPUESTA
 
       if (response.data.status === "success") {
         login(response.data);
-        console.log("TOKEN GUARDADO:", response.data.token);
-
         navigate("/menu");
       } else {
         alert(response.data.message);
@@ -46,7 +42,7 @@ function Login() {
         </div>
 
         <h1 className="h5 mb-4">
-          Bienvenido al Sistema de Gestión de Inventarios
+          Bienvenido al Sistema de Gestion de Inventarios
         </h1>
 
         <form onSubmit={handleSubmit}>
@@ -63,7 +59,7 @@ function Login() {
           </div>
 
           <div className="mb-2">
-            <label className="form-label">Contraseña</label>
+            <label className="form-label">Contrasena</label>
 
             <input
               type="password"
@@ -74,13 +70,13 @@ function Login() {
           </div>
 
           <div className="mb-3 text-end">
-            <button type="button" className="forgot-link btn btn-link p-0">
-              ¿Olvidaste tu contraseña?
-            </button>
+            <Link to="/forgot-password" className="forgot-link btn btn-link p-0">
+              Olvidaste tu contrasena?
+            </Link>
           </div>
 
           <button type="submit" className="login-btn btn-brand w-100 py-2">
-            Iniciar Sesión
+            Iniciar Sesion
           </button>
         </form>
 
